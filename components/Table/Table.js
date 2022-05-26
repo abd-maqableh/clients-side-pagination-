@@ -8,7 +8,6 @@ import TableHead from "./TableHead";
 import TableBody from "./TableBody";
 const Table = ({ data }) => {
   const formFilter = useSelector((state) => state.FormData.formFilter);
-  console.log("formFilter", formFilter);
   const [tableData, setTableData] = useState();
 
   useEffect(() => {
