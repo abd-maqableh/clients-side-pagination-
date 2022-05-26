@@ -17,7 +17,9 @@ const Table = ({ data }) => {
           item.applicationType === formFilter.applicationType ||
           item.actionType === formFilter.actionType ||
           item.applicationId === formFilter.applicationID ||
-          item.userId == formFilter.employeeID
+          item.userId == formFilter.employeeID ||
+          item.creationTimestamp?.split(" ")[0] <= formFilter.fromDate ||
+          item.creationTimestamp?.split(" ")[0] >= formFilter.toDate
       );
       setTableData(!isEmpty(filterTableData) ? filterTableData : []);
     } else {

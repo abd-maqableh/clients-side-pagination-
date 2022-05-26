@@ -1,7 +1,6 @@
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import DatePicker from "react-multi-date-picker";
 import css from "./Form.module.scss";
 import { getFromDate } from "../../store/action/FormFilter";
 const initialValue = {
@@ -13,7 +12,7 @@ const initialValue = {
   toDate: "",
 };
 const Form = ({ actionType, applictionType }) => {
-  const { register, handleSubmit, control, reset } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
   const onSubmit = (data) => dispatch(getFromDate(data));
   const clearInput = () => {
@@ -35,7 +34,7 @@ const Form = ({ actionType, applictionType }) => {
       </div>
       <div className={css.inputbox}>
         <select {...register("actionType")}>
-          <option value=" ">---- </option>
+          <option value=" "> ---- </option>
 
           {actionType?.map(
             (item, index) =>
@@ -50,7 +49,7 @@ const Form = ({ actionType, applictionType }) => {
       </div>
       <div className={css.inputbox}>
         <select {...register("applicationType")}>
-          <option value=" ">---- </option>
+          <option value=" "> ---- </option>
           {applictionType?.map((item, index) => (
             <option key={index} value={item}>
               {item}
@@ -60,39 +59,15 @@ const Form = ({ actionType, applictionType }) => {
         <span className={css.name}>Application type</span>
       </div>
       <div className={css.inputbox}>
-        <Controller
-          control={control}
-          name="fromDate"
-          render={({ field: { onChange, name, value } }) => (
-            <>
-              <DatePicker
-                value={value || Date.now()}
-                onChange={(date) => {
-                  onChange(date || "");
-                }}
-                format="MM/DD/YYYY"
-              />
-            </>
-          )}
+        <input
+          className={css.inputDate}
+          type="date"
+          {...register("fromDate")}
         />
         <span className={css.name}>From Date</span>
       </div>
       <div className={css.inputbox}>
-        <Controller
-          control={control}
-          name="toDate"
-          render={({ field: { onChange, name, value } }) => (
-            <>
-              <DatePicker
-                value={value || Date.now()}
-                onChange={(date) => {
-                  onChange(date?.isValid ? date : "");
-                }}
-                format="MM/DD/YYYY"
-              />
-            </>
-          )}
-        />
+        <input className={css.inputDate} type="date" {...register("toDate")} />
         <span className={css.name}>To Date</span>
       </div>
       <button type="submit" className={css.btn}>
