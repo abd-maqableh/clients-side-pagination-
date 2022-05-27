@@ -11,14 +11,17 @@ export default function Home() {
   const { data, lodaing } = useFetch(
     "https://run.mocky.io/v3/a2fbc23e-069e-4ba5-954c-cd910986f40f"
   );
+
   const applictionType = useMemo(
     () => data?.auditLog?.map((item) => item?.applicationType),
     [data]
   );
+
   const actionType = useMemo(
     () => data?.auditLog?.map((item) => item?.actionType),
     [data]
   );
+
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;

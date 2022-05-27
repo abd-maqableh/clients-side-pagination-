@@ -44,7 +44,9 @@ const Pagination = (props) => {
         className={classnames(css.paginationItem, {
           disabled: currentPage === 1,
         })}
-        onClick={onPrevious}
+        onClick={(e) =>
+          currentPage === 1 ? e.stopPropagation() : onPrevious()
+        }
       >
         <div className={classnames(css.left, css.arrow)} />
       </li>
@@ -76,7 +78,9 @@ const Pagination = (props) => {
         className={classnames(css.paginationItem, {
           disabled: currentPage === lastPage,
         })}
-        onClick={onNext}
+        onClick={(e) =>
+          currentPage === lastPage ? e.stopPropagation() : onNext()
+        }
       >
         <div className={classnames(css.right, css.arrow)} />
       </li>
