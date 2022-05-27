@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import css from "./Table.module.scss";
 const columns = [
+  { label: " ", header_key: "number", sortable: false },
   { label: "Log ID", header_key: "logId", sortable: true },
   { label: "Application Type", header_key: "applicationType", sortable: true },
   { label: "Application ID", header_key: "applicationId", sortable: true },
