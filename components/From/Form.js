@@ -1,5 +1,7 @@
 import React from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
+import classnames from "classnames";
+
 import { useDispatch } from "react-redux";
 import css from "./Form.module.scss";
 import { getFromDate } from "../../store/action/FormFilter";
@@ -70,10 +72,13 @@ const Form = ({ actionType, applictionType }) => {
         <input className={css.inputDate} type="date" {...register("toDate")} />
         <span className={css.name}>To Date</span>
       </div>
-      <button type="submit" className={`${css.btn} ${css.btnSubmit}`}>
+      <button type="submit" className={classnames(css.btn, css.btnSubmit)}>
         Search Logger
       </button>
-      <button onClick={clearInput} className={`${css.btn} ${css.btnClear}`}>
+      <button
+        onClick={clearInput}
+        className={classnames(css.btn, css.btnClear)}
+      >
         Clear Inputs
       </button>
     </form>

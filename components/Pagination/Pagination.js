@@ -9,7 +9,6 @@ const Pagination = (props) => {
     siblingCount = 1,
     currentPage,
     pageSize,
-    className,
   } = props;
 
   const paginationRange = usePagination({
@@ -35,14 +34,10 @@ const Pagination = (props) => {
     ? paginationRange[paginationRange?.length - 1]
     : 1;
   return (
-    <ul
-      className={classnames(css.paginationContainer, {
-        [className]: className,
-      })}
-    >
+    <ul className={css.paginationContainer}>
       <li
         className={classnames(css.paginationItem, {
-          disabled: currentPage === 1,
+          [css.disabled]: currentPage === 1,
         })}
         onClick={(e) =>
           currentPage === 1 ? e.stopPropagation() : onPrevious()
@@ -66,7 +61,7 @@ const Pagination = (props) => {
           <li
             key={index}
             className={classnames(css.paginationItem, {
-              selected: pageNumber === currentPage,
+              [css.selected]: pageNumber === currentPage,
             })}
             onClick={() => onPageChange(pageNumber)}
           >
@@ -76,7 +71,7 @@ const Pagination = (props) => {
       })}
       <li
         className={classnames(css.paginationItem, {
-          disabled: currentPage === lastPage,
+          [css.disabled]: currentPage === lastPage,
         })}
         onClick={(e) =>
           currentPage === lastPage ? e.stopPropagation() : onNext()
