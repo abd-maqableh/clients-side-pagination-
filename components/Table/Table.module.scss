@@ -60,6 +60,7 @@
 
 .up{
   position: relative;
+  cursor: pointer;
   &::before {
     content: "";
     position: absolute;
@@ -73,6 +74,8 @@
 
 .down{
   position: relative;
+  cursor: pointer;
+
   &::before {
     content: "";
     position: absolute;
