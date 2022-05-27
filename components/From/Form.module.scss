@@ -41,17 +41,32 @@
 }
 
 .btn {
-  background: dodgerblue;
-  color: #fff;
-  border: #fff;
   border: 2px solid;
   width: 22%;
   height: 50px;
   margin-left: 16px;
   cursor:pointer;
+  
+}
+
+
+.btnSubmit{
+  background: dodgerblue;
+  color: #fff;
+  border: #fff;
   &:hover {
     background: #fff;
     border:2px solid dodgerblue;
     color: dodgerblue;
+  }
+}
+.btnClear{
+  background: rgb(241, 64, 64);
+  color: #fff;
+  border: #fff;
+  &:hover {
+    background: #fff;
+    border:2px solid rgb(241, 64, 64);
+    color: rgb(241, 64, 64);
   }
 }

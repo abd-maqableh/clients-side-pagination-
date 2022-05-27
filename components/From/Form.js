@@ -70,11 +70,11 @@ const Form = ({ actionType, applictionType }) => {
         <input className={css.inputDate} type="date" {...register("toDate")} />
         <span className={css.name}>To Date</span>
       </div>
-      <button type="submit" className={css.btn}>
+      <button type="submit" className={`${css.btn} ${css.btnSubmit}`}>
         Search Logger
       </button>
-      <button onClick={clearInput} className={css.btn}>
-        Clear Input
+      <button onClick={clearInput} className={`${css.btn} ${css.btnClear}`}>
+        Clear Inputs
       </button>
     </form>
   );

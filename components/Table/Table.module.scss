@@ -57,3 +57,29 @@
 //     }
 //   }
   
+
+.up{
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    background : url("/imgs/arrow-up2.svg") no-repeat;
+    width:30px;
+    height:30px;
+  }
+}
+
+.down{
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    background : url("/imgs/arrow-down2.svg") no-repeat;
+    width:30px;
+    height:30px;
+  }
+}

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import css from "./Table.module.scss";
 const columns = [
   { label: "Log ID", header_key: "logId", sortable: true },
   { label: "Application Type", header_key: "applicationType", sortable: true },
@@ -24,10 +25,10 @@ const TableHead = ({ handleSorting }) => {
         {columns.map(({ label, header_key, sortable }) => {
           const cl = sortable
             ? sortField && sortField === header_key && order === "asc"
-              ? "up"
+              ? css.up
               : sortField && sortField === header_key && order === "desc"
-              ? "down"
-              : "default"
+              ? css.down
+              : css.up
             : "";
           return (
             <th
