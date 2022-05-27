@@ -3,10 +3,13 @@ import { useSelector } from "react-redux";
 import isEmpty from "lodash/isEmpty";
 
 import css from "./Table.module.scss";
-import isObjectValueEmpty from "../../utils/isEmptyObject";
 import TableHead from "./TableHead";
 import TableBody from "./TableBody";
-import { filterDate, handleSorting } from "../../utils/appUtils";
+import {
+  filterDate,
+  handleSorting,
+  isObjectValueEmpty,
+} from "../../utils/appUtils";
 const Table = ({ data }) => {
   const formFilter = useSelector((state) => state.FormData.formFilter);
   const [tableData, setTableData] = useState();

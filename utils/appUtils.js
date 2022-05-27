@@ -30,3 +30,10 @@ export const filterDate = (data, formFilter) => {
   });
   return newData;
 };
+
+export const isObjectValueEmpty = (obj) => {
+  for (const key in obj) {
+    if (obj[key] !== null && obj[key] != "") return false;
+  }
+  return true;
+};
