@@ -23,9 +23,9 @@ export const filterDate = (data, formFilter) => {
     return (
       item.applicationType === formFilter.applicationType ||
       item.actionType === formFilter.actionType ||
-      item.applicationId === formFilter.applicationID ||
+      item.applicationId == formFilter.applicationID ||
       item.userId == formFilter.employeeID ||
-      createdAt.isBetween(formFilter.fromDate, formFilter.fromDate)
+      createdAt.isBetween(formFilter.fromDate, formFilter.toDate)
     );
   });
   return newData;

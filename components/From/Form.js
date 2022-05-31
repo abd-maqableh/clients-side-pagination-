@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import classnames from "classnames";
+import moment from "moment";
 
 import { useDispatch } from "react-redux";
 import css from "./Form.module.scss";
@@ -14,9 +15,32 @@ const initialValue = {
   toDate: "",
 };
 const Form = ({ actionType, applictionType }) => {
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setError,
+    formState: { errors },
+  } = useForm();
+  console.log("errors", errors);
   const dispatch = useDispatch();
-  const onSubmit = (data) => dispatch(getFromDate(data));
+  const onSubmit = (data) => {
+    const fromDate = moment(data.fromDate);
+    const toDate = moment(data.toDate);
+    if (fromDate.diff(toDate, "days")) {
+      setError(
+        "toDate",
+        {
+          type: "custom",
+          message:
+            "the inputs has 'To Date' label is less than input has label 'From Date'",
+        },
+        { shouldFocus: true }
+      );
+    } else {
+      dispatch(getFromDate(data));
+    }
+  };
   const clearInput = () => {
     reset(initialValue);
   };
@@ -71,6 +95,9 @@ const Form = ({ actionType, applictionType }) => {
       <div className={css.inputbox}>
         <input className={css.inputDate} type="date" {...register("toDate")} />
         <span className={css.name}>To Date</span>
+        {errors?.toDate && (
+          <p className={css.error}>{errors?.toDate?.message}</p>
+        )}
       </div>
       <button type="submit" className={classnames(css.btn, css.btnSubmit)}>
         Search Logger
