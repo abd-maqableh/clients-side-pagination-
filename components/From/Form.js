@@ -22,12 +22,11 @@ const Form = ({ actionType, applictionType }) => {
     setError,
     formState: { errors },
   } = useForm();
-  console.log("errors", errors);
   const dispatch = useDispatch();
   const onSubmit = (data) => {
     const fromDate = moment(data.fromDate);
     const toDate = moment(data.toDate);
-    if (fromDate.diff(toDate, "days")) {
+    if (fromDate.isSameOrAfter(toDate, "day")) {
       setError(
         "toDate",
         {
